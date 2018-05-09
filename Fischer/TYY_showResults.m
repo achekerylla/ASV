@@ -58,7 +58,8 @@ function [] = headTohead(desType1,desType2)
 
 desType =[desType1,desType2];
 detectType = [1,1];
-pairAP = zeros(2,8*5);
+%pairAP = zeros(2,8*5);
+pairAP = zeros(2,16*25);
 
 for i = 1:2
     
@@ -71,6 +72,8 @@ for i = 1:2
 
     if desType(i) == 1
         load([nameR,'allResults_sift.mat'])
+        fprintf(' size(pairAP) at location 123 is [%d %d] \n',size(pairAP));
+        fprintf(' size(AP) at location 123 is [%d %d] \n',size(AP));
         pairAP(i,:) = AP;
     elseif desType(i) ==2
         load([nameR,'allResults_dsp.mat'])
@@ -84,7 +87,7 @@ for i = 1:2
     end
 end
 
-figure(2)
+figure(1)
 set(gcf, 'Visible', 'off')  % AC: Hide figure
 x = 0:0.1:1;
 y = 0:0.1:1;
