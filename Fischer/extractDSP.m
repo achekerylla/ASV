@@ -2,8 +2,10 @@ clear all
 close all
 clc
 %% Library and paths
-run ../../../vlfeat-0.9.18/toolbox/vl_setup
-dataset_dir = '/home/shamangary2/Desktop/codeDemo/image_matching_dataset/Fischer/Fischer_dataset/';
+%run ../../../vlfeat-0.9.18/toolbox/vl_setup
+run ../vlfeat-0.9.18/toolbox/vl_setup
+%dataset_dir = '/home/shamangary2/Desktop/codeDemo/image_matching_dataset/Fischer/Fischer_dataset/';
+dataset_dir = './Fischer_dataset/';
 Lname = {'01_graffity','02_autumn_trees','03_freiburg_center','04_freiburg_from_munster_crop','05_freiburg_innenstadt','09_cool_car','12_wall','13_mountains','14_park_crop','17_freiburg_munster','18_graffity','20_hall2','21_dog2','22_small_palace','23_cat1','24_cat2'};
 
 detectType = 1;

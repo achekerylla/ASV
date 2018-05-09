@@ -1,17 +1,18 @@
 %% Show descriptor result
-function [] = TYY_showResults()
+%function [] = TYY_showResults()  % AC: DISABLED ORIGINAL
+function [] = TYY_showResults(desType1,desType2,detectType)  % AC: ADDED PARAMETERS
 
-desType1 = 1;
-desType2 = 2;
+%desType1 = 1;
+%desType2 = 2;
 
-allmAP(desType1)
+allmAP(desType1,detectType)
 headTohead(desType1,desType2)
 
 
 
-function [] = allmAP(desType)
+function [] = allmAP(desType,detectType)
 
-detectType = 1;
+%detectType = 1;
 if detectType == 1
     nameR = ['./mAPdes/DoG/'];
 elseif detectType == 2
@@ -43,12 +44,14 @@ fprintf('mAP: %.4f\n',mAP);
 
 
 figure(1)
+set(gcf, 'Visible', 'off')  % AC: Hide figure
 data = [AP'];
 hbar = bar(data);
 set(hbar(1),'facecolor',[1 0 0]);
 xlabel('image pair ID','FontSize',20)
 ylabel('AP','FontSize',20)
-
+saveas(gcf, 'Figure1.png')  % AC: Save figure as image
+close(gcf)  % AC: Close figure
 
 %% Comparing different methods
 function [] = headTohead(desType1,desType2)
@@ -82,9 +85,12 @@ for i = 1:2
 end
 
 figure(2)
+set(gcf, 'Visible', 'off')  % AC: Hide figure
 x = 0:0.1:1;
 y = 0:0.1:1;
 plot(pairAP(1,:),pairAP(2,:),'ro',x,y,'k--','linewidth',3)
 xlabel(['desType:',num2str(desType(1)),', detectType: ',num2str(detectType(1))],'fontsize',20);
 ylabel(['desType:',num2str(desType(2)),', detectType: ',num2str(detectType(2))],'fontsize',20);
 title('Oxford','fontsize',20)
+saveas(gcf, 'Figure2.png')  % AC: Save figure as image
+close(gcf)  % AC: Close figure
